@@ -3,7 +3,7 @@ package br.edu.so.control;
 import java.util.Random;
 
 import br.edu.so.model.CampoMinadoDificuldades;
-import br.edu.so.model.Mapa;
+import br.edu.so.model.CampoMinado;
 
 /**
  * Classe que possui uma thread responsável por achar uma posição aleatória para
@@ -15,9 +15,9 @@ public class ThreadPosicionaBomba implements Runnable {
 
 	private Random r;
 	private CampoMinadoDificuldades dificuldade;
-	private Mapa mapa;
+	private CampoMinado mapa;
 
-	public ThreadPosicionaBomba(Mapa mapa, CampoMinadoDificuldades dificuldade) {
+	public ThreadPosicionaBomba(CampoMinado mapa, CampoMinadoDificuldades dificuldade) {
 		this.mapa = mapa;
 		this.dificuldade = dificuldade;
 		r = new Random();
@@ -28,8 +28,8 @@ public class ThreadPosicionaBomba implements Runnable {
 	public void run() {
 		while (true) {
 			// Random
-			int linha = r.nextInt(dificuldade.getAltura());
-			int coluna = r.nextInt(dificuldade.getLargura());
+			int linha = r.nextInt(dificuldade.getLinhas());
+			int coluna = r.nextInt(dificuldade.getColunas());
 			// Se colocar a bomba, a thread morre, se não, ela tenta com outros números
 			if (mapa.setBomba(linha, coluna))
 				break;

@@ -1,6 +1,6 @@
 package br.edu.so.control;
 
-import br.edu.so.model.Mapa;
+import br.edu.so.model.CampoMinado;
 
 /**
  * Abre casas adjacentes à casas vaziaClicada. Se a casa adjacente é vazia, ela
@@ -8,12 +8,12 @@ import br.edu.so.model.Mapa;
  *
  */
 public class ThreadAbrirCasasVazias implements Runnable {
-	Mapa mapa;
+	CampoMinado mapa;
 	Integer linha;
 	Integer coluna;
 	ControleAbreCasa ca;
 
-	public ThreadAbrirCasasVazias(Mapa mapa, Integer linha, Integer coluna, ControleAbreCasa ca) {
+	public ThreadAbrirCasasVazias(CampoMinado mapa, Integer linha, Integer coluna, ControleAbreCasa ca) {
 		this.mapa = mapa;
 		this.linha = linha;
 		this.coluna = coluna;
@@ -25,7 +25,7 @@ public class ThreadAbrirCasasVazias implements Runnable {
 		// TODO:
 		// Testa se esta aberta
 		// Se não, abre. Se for vazia, chama outra Thread para ela.
-		ca.abrirCasa(linha, coluna);
+		// ca.abrirCasa(linha, coluna);
 	}
 
 }

@@ -4,23 +4,23 @@ public enum CampoMinadoDificuldades {
 
 	FACIL(9, 9, 10), MEDIO(16, 16, 40), DIFICIL(16, 30, 99);
 
-	private final int altura, largura, qtdBombas;
+	private final int linhas, colunas, qtdBombas;
 
-	CampoMinadoDificuldades(int altura, int largura, int qtdBombas) {
-		this.altura = altura;
-		this.largura = largura;
+	CampoMinadoDificuldades(int linhas, int colunas, int qtdBombas) {
+		this.linhas = linhas;
+		this.colunas = colunas;
 		this.qtdBombas = qtdBombas;
 	}
 
-	public int getAltura() {
-		return altura;
+	public Integer getLinhas() {
+		return linhas;
 	}
 
-	public int getLargura() {
-		return largura;
+	public Integer getColunas() {
+		return colunas;
 	}
 
-	public int getQtdBombas() {
+	public Integer getQtdBombas() {
 		return qtdBombas;
 	}
 

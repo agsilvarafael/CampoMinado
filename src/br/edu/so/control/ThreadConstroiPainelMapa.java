@@ -9,7 +9,6 @@ public class ThreadConstroiPainelMapa implements Runnable {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 
 	}
 
