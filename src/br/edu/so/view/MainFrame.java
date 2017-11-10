@@ -50,7 +50,7 @@ public class MainFrame extends JFrame {
 		JPanel pJogo = new JPanel();
 		pJogo.setMinimumSize(new Dimension(784, 420));
 		pJogo.setBorder(null);
-		pJogo.setBackground(Color.CYAN);
+		pJogo.setBackground(Color.WHITE);
 
 		JPanel pInfo = new JPanel();
 		pInfo.setMinimumSize(new Dimension(784, 120));
@@ -80,7 +80,7 @@ public class MainFrame extends JFrame {
 		btnRestart.setIgnoreRepaint(true);
 		btnRestart.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnRestart.setToolTipText("Novo jogo");
-		btnRestart.setBackground(Color.LIGHT_GRAY);
+		btnRestart.setBackground(Color.WHITE);
 
 		lblBombasResstantes = new JLabel("10");
 		lblBombasResstantes.setHorizontalAlignment(SwingConstants.RIGHT);
