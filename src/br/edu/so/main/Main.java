@@ -8,11 +8,14 @@ import br.edu.so.view.MainFrame;
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
-		CampoMinado mapa = new CampoMinado();
+		CampoMinado campoMinado = new CampoMinado();
+		campoMinado.novoJogo(CampoMinadoDificuldades.DIFICIL);
 		for (int i = 0; i < 10; i++)
-			new ThreadPosicionaBomba(mapa, CampoMinadoDificuldades.FACIL);
+			new ThreadPosicionaBomba(campoMinado);
 		Thread.sleep(500);
-		MainFrame mFrame = new MainFrame(mapa);
+		MainFrame mFrame = new MainFrame(campoMinado);
+		// Thread.sleep(500);
+		// mFrame.repaint();
 		// TODO: Olhar como espera uma sequencia de threads morrerem
 
 	}

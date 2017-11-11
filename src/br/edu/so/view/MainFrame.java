@@ -35,6 +35,7 @@ public class MainFrame extends JFrame {
 	private CampoMinado campoMinado;
 	private JLabel lblBombasResstantes;
 	private JLabel lblCronometro;
+	private PainelJogo panelJogo;
 
 	// TODO: Trocar pontuação por quantidade de bombas
 	public MainFrame(CampoMinado campoMinado) {
@@ -44,6 +45,7 @@ public class MainFrame extends JFrame {
 		setIconImage(Imagens.IMG_BOMBA.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setPreferredSize(new Dimension(800, 600));
+		setMinimumSize(new Dimension(800, 600));
 		setSize(800, 600);
 		setLocationRelativeTo(null);
 
@@ -67,8 +69,8 @@ public class MainFrame extends JFrame {
 						.addComponent(pInfo, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)));
 		pJogo.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel = new PainelJogoFacil(campoMinado);
-		pJogo.add(panel, BorderLayout.CENTER);
+		panelJogo = new PainelJogo(campoMinado);
+		pJogo.add(panelJogo, BorderLayout.CENTER);
 
 		JLabel btnRestart = new JLabel(Imagens.IMG_RESTART);
 		btnRestart.addMouseListener(new MouseAdapter() {
@@ -191,6 +193,10 @@ public class MainFrame extends JFrame {
 		mnAjuda.add(mntmSobre);
 
 		setVisible(true);
+	}
+
+	public PainelJogo getPanelJogo() {
+		return panelJogo;
 	}
 
 	public JLabel getLblBombasResstantes() {

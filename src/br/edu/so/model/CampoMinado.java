@@ -20,6 +20,13 @@ public class CampoMinado {
 		casasRestantes = dificuldade.getLinhas() * dificuldade.getColunas();
 	}
 
+	public void novoJogo(CampoMinadoDificuldades dificuldade) {
+		this.dificuldade = dificuldade;
+		matrizMapa = geraMatrizMapa(dificuldade.getLinhas(), dificuldade.getColunas());
+		matrizMapaAberto = geraMapaFechado(dificuldade.getLinhas(), dificuldade.getColunas());
+		casasRestantes = dificuldade.getLinhas() * dificuldade.getColunas();
+	}
+
 	private Integer[][] geraMatrizMapa(int linhas, int colunas) {
 		Integer temp[][] = new Integer[linhas][colunas];
 		for (int i = 0; i < linhas; i++) {

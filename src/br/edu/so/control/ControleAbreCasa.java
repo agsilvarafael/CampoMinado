@@ -27,7 +27,7 @@ public class ControleAbreCasa {
 	// }
 	// }
 
-	public void abrirCasa(Integer linha, Integer coluna, CampoMinado campoMinado, BotaoCasa botao) {
+	public void abrirCasaCompleto(Integer linha, Integer coluna, CampoMinado campoMinado, BotaoCasa botao) {
 		if (!campoMinado.isCasaAberta(linha, coluna)) {
 			campoMinado.abrirCasa(linha, coluna);
 			botao.setBackground(SystemColor.inactiveCaption);
@@ -40,6 +40,24 @@ public class ControleAbreCasa {
 			}
 			// VAZIO
 			else if (!campoMinado.isDica(linha, coluna)) {
+				botao.setText("");
+			}
+			// DICA
+			else {
+				botao.setText(campoMinado.getMatrizMapaCelula(linha, coluna).toString());
+			}
+			botao.removerMouseAdapter();
+		}
+	}
+
+	public void abrirCasaSimples(Integer linha, Integer coluna, CampoMinado campoMinado, BotaoCasa botao) {
+		if (!campoMinado.isCasaAberta(linha, coluna) && !campoMinado.isBomba(linha, coluna)) {
+			campoMinado.abrirCasa(linha, coluna);
+			botao.setBackground(SystemColor.inactiveCaption);
+			botao.setBorder(new LineBorder(Color.WHITE, 2));
+			botao.setIcon(null);
+			// VAZIO
+			if (!campoMinado.isDica(linha, coluna)) {
 				botao.setText("");
 			}
 			// DICA
