@@ -9,8 +9,9 @@ import br.edu.so.model.CampoMinado;
  * a bomba. Ela gera um número aleatório refente à posição, verifica se não há
  * bomba no local, e então chama o método setBbomba, da classe CampoMinado.
  * 
+ * É subclasse de thread, para herdar o método join, necessário no main.
  */
-public class ThreadPosicionaBomba implements Runnable {
+public class ThreadPosicionaBomba extends Thread {
 
 	private Random r;
 	private CampoMinado campoMinado;

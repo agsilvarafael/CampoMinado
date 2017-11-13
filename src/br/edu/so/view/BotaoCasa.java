@@ -25,7 +25,7 @@ public class BotaoCasa extends JButton {
 		public void mouseClicked(MouseEvent e) {
 			// LEFT
 			if (SwingUtilities.isLeftMouseButton(e) && !isMarcado())
-				cac.abrirCasa(x, y, campoMinado, BotaoCasa.this);
+				cac.abrirCasaCompleto(x, y, campoMinado, BotaoCasa.this);
 			// RIGHT
 			else if (SwingUtilities.isRightMouseButton(e)) {
 				setIcon(isMarcado() ? null : Imagens.IMG_BANDEIRA);

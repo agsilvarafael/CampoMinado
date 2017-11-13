@@ -212,5 +212,12 @@ public class MainFrame extends JFrame {
 		ControleCronometro.reiniciarCronometro(this);
 		lblBombasResstantes.setText(campoMinado.getDificuldade().getQtdBombas().toString());
 	}
+	
+	public void reiniciar(){
+		ControleCronometro.reiniciarCronometro(this);
+		lblBombasResstantes.setText(campoMinado.getDificuldade().getQtdBombas().toString());
+		//TODO: reiniciar tudo
+		this.repaint();
+	}
 
 }

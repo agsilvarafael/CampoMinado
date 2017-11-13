@@ -12,16 +12,16 @@ public class ThreadAbrirCasasVazias implements Runnable {
 	private CampoMinado campoMinado;
 	private Integer linha;
 	private Integer coluna;
-	private ControleAbreCasa ca;
+	private ControleAbreCasa controleAbreCasa;
 	private MainFrame mf;
 
-	public ThreadAbrirCasasVazias(CampoMinado campoMinado, Integer linha, Integer coluna, ControleAbreCasa ca,
-			MainFrame mf) {
+	public ThreadAbrirCasasVazias(CampoMinado campoMinado, Integer linha, Integer coluna, ControleAbreCasa controleAbreCasa,
+			MainFrame mainFrame) {
 		this.campoMinado = campoMinado;
 		this.linha = linha;
 		this.coluna = coluna;
-		this.ca = ca;
-		this.mf = mf;
+		this.controleAbreCasa = controleAbreCasa;
+		this.mf = mainFrame;
 		(new Thread(this)).start();
 	}
 
@@ -45,13 +45,11 @@ public class ThreadAbrirCasasVazias implements Runnable {
 					// Testa se a a casa vizinha não está aberta
 					if (!campoMinado.isCasaAberta(i, j)) {
 						// Abre a casa.
-						// TODO: Preciso passar o botão como parâmetro (implementar método getBotão no
-						// PainelJogoFacil)
-						ca.abrirCasaSimples(i, j, campoMinado, mf.getPanelJogo().getBotao(i, j));
+						controleAbreCasa.abrirCasaSimples(i, j, campoMinado, mf.getPanelJogo().getBotao(i, j));
 
 						// Se a casa for vazia, chama outra Thread para abrir os adjacentes à ela.
 						if (campoMinado.isVazio(i, j))
-							new ThreadAbrirCasasVazias(campoMinado, i, j, ca, mf);
+							new ThreadAbrirCasasVazias(campoMinado, i, j, controleAbreCasa, mf);
 					}
 				}
 			}

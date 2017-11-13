@@ -3,7 +3,6 @@ package br.edu.so.control;
 import java.awt.Color;
 import java.awt.SystemColor;
 
-import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
 import br.edu.so.model.CampoMinado;
@@ -36,15 +35,27 @@ public class ControleAbreCasa {
 			// BOMBA
 			if (campoMinado.isBomba(linha, coluna)) {
 				botao.setIcon(Imagens.IMG_BOMBA);
-				JOptionPane.showMessageDialog(null, "Fim de Jogo!");
+				campoMinado.fimJogo(false); 
 			}
 			// VAZIO
 			else if (!campoMinado.isDica(linha, coluna)) {
 				botao.setText("");
+
+				//Testar se acabou
+				if(campoMinado.getDificuldade().getQtdBombas() == campoMinado.getCasasRestantes())
+					campoMinado.fimJogo(true); 
 			}
 			// DICA
 			else {
 				botao.setText(campoMinado.getMatrizMapaCelula(linha, coluna).toString());
+				
+				//TODO:Precisa chamar a thread para abrir as casas vazias 
+				// mas falta passar o mainframe
+				//new ThreadAbrirCasasVazias(campoMinado, linha, coluna, this, mainFrame)
+				
+				//Testar se acabou
+				if(campoMinado.getDificuldade().getQtdBombas() == campoMinado.getCasasRestantes())
+					campoMinado.fimJogo(true); 
 			}
 			botao.removerMouseAdapter();
 		}
@@ -65,6 +76,10 @@ public class ControleAbreCasa {
 				botao.setText(campoMinado.getMatrizMapaCelula(linha, coluna).toString());
 			}
 			botao.removerMouseAdapter();
+			
+			//Testar se acabou
+			if(campoMinado.getDificuldade().getQtdBombas() == campoMinado.getCasasRestantes())
+				campoMinado.fimJogo(true); 
 		}
 	}
 }
